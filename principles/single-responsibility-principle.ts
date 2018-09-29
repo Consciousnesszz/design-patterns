@@ -24,11 +24,11 @@ class DBUtil {
   getConnect(): Connect { return; }
 }
 
-class Customer {
+class CustomerDAO {
   findCustomers(): Array<object> { return []; }
 }
 
-class chart {
+class Chart {
   creatChart(): void {}
 
   displayChart(): void {}

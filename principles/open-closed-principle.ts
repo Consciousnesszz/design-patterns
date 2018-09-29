@@ -20,9 +20,13 @@ class ChartDisplay {
   }
 }
 
+new ChartDisplay().displayChart('pie');
+
 // better: 增加抽象类型 chart ，调用时再确定子类
 class ChartDisplayBetter {
   displayChart(ChartClass: new () => Chart): void {
     return new ChartClass().display();
   }
 }
+
+new ChartDisplayBetter().displayChart(LineChart);
