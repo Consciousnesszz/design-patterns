@@ -43,4 +43,3 @@ class CustomerDAOBetter {
 
   findCustomer(): Array<Object> { return []; }
 }
-
