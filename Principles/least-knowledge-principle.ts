@@ -23,7 +23,7 @@ class Button {
 
 // better：引入专门控制交互的中间类 Mediator 来降低耦合度
 class Mediator {
-  change(): void {
+  static change(): void {
     // change input...
     // change list...
     // change text...
@@ -32,6 +32,6 @@ class Mediator {
 
 class ButtonBetter {
   handleClick(): void {
-    return new Mediator().change();
+    return Mediator.change();
   }
 }

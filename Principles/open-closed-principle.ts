@@ -11,7 +11,7 @@ class LineChart extends Chart {}
 
 // worse: 硬编码判断类型，增加 line chart 需变动判断代码
 class ChartDisplay {
-  displayChart(type: string): void {
+  static displayChart(type: string): void {
     if (type === 'pie') {
       return new PieChart().display();
     } else if (type === 'bar') {
@@ -20,13 +20,14 @@ class ChartDisplay {
   }
 }
 
-new ChartDisplay().displayChart('pie');
+ChartDisplay.displayChart('pie');
+
 
 // better: 增加抽象类型 chart ，调用时再确定子类
 class ChartDisplayBetter {
-  displayChart(ChartClass: new () => Chart): void {
+  static displayChart(ChartClass: new () => Chart): void {
     return new ChartClass().display();
   }
 }
 
-new ChartDisplayBetter().displayChart(LineChart);
+ChartDisplayBetter.displayChart(LineChart);

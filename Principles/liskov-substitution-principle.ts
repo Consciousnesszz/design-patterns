@@ -33,22 +33,23 @@ class Email {
 }
 
 // better: 提炼出抽象 user 类，根据里氏代换，在调用时将父类替换为子类
-class User {
+abstract class User {
   name: string
+  constructor(name) {
+    this.name = name
+  }
 }
 
 class CommonUserBetter extends User {
   constructor(params) {
-    super()
-    this.name = 'commonUser'
+    super('commonUser');
   }
   commonFn: () => {}
 }
 
 class VipUserBetter extends User {
   constructor(params) {
-    super()
-    this.name = 'vipUser'
+    super('vipUser');
   }
   vipFn: () => {}
 }

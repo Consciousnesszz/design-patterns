@@ -7,25 +7,25 @@
  */
 
 // 实例：将不同格式客户信息存入用户数据库
-
-class DataCovert {
+// 前置条件：TxtDataConvert 和 ExcelDataConvert 不是来自一个抽象类 DataCovert
+abstract class DataCovert {
   // 抽象读取文件方法
-  readFile(): void {}
+  public static readFile(): void {}
 }
 class TxtDataConvert extends DataCovert {
-  readFile(): void {} // 重写 readFile 方法，完成自身功能
+  public static readFile(): void {} // 重写 readFile 方法，完成自身功能
 }
 class ExcelDataConvert {
-  readFile(): void {}
+  public static readFile(): void {}
 }
 
 // worse：硬编码数据格式。重复书写添加方法，新数据类型需更改代码
 class CustomerDAO { // DAO：data access object，是一个面向对象的数据库接口
-  addCustomerFromTxt(): void {
-    return new TxtDataConvert().readFile();
+  public addCustomerFromTxt(): void {
+    return TxtDataConvert.readFile();
   }
-  addCustomerFromExcel(): void {
-    return new ExcelDataConvert().readFile();
+  public addCustomerFromExcel(): void {
+    return ExcelDataConvert.readFile();
   }
 }
 
@@ -35,8 +35,8 @@ const config = {
   dataConvertType: TxtDataConvert
 }
 class CustomerDAOBetter {
-  addCustomer(): void {
-    return new config.dataConvertType().readFile();
+  public addCustomer(): void {
+    return config.dataConvertType.readFile();
   }
 }
 

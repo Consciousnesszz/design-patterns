@@ -13,17 +13,17 @@
  */
 
 class DBUtil {
-  getConnection(): Object { return {}; }
+  public getConnection(): Object { return {}; }
 }
 
 class OracleDBUtil extends DBUtil {
   // 重写方法，实现自身功能
-  getConnection(): Object { return {}; }
+  public getConnection(): Object { return {}; }
 }
 
 // wrose：将 customer DAO 作为 DBUtil 的子类，调用 DBUtil 方法，当新增数据库 OracleDBUtil 时违反开闭原则
 class CustomerDAO extends DBUtil {
-  findCustomer(): Array<Object> { return []; }
+  public findCustomer(): Array<Object> { return []; }
 }
 
 // better：将 DBUtil 类注入到 CutomerDAO 中，实现继承关系到关联关系的转变
@@ -34,12 +34,12 @@ class CustomerDAOBetter {
     this.DBUtil = params.DButil
   }
 
-  DBUtil: DBUtil
+  public DBUtil: DBUtil
 
   // setter 注入
-  setUtil(newDBUtil: DBUtil) { this.DBUtil = newDBUtil}
+  public setUtil(newDBUtil: DBUtil) { this.DBUtil = newDBUtil}
 
-  getConnection(): Object { return this.DBUtil.getConnection(); }
+  public getConnection(): Object { return this.DBUtil.getConnection(); }
 
-  findCustomer(): Array<Object> { return []; }
+  public findCustomer(): Array<Object> { return []; }
 }
