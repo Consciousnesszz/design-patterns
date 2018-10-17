@@ -5,7 +5,7 @@
  * 因此简单工厂模式又被称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。
  */
 
-// 示例
+// 结构示例
 abstract class Product {
   // 公共方法
   public sameMethod():void {}

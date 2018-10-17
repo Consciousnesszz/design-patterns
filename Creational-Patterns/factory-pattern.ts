@@ -10,7 +10,7 @@
  * 而是针对不同的产品提供不同的工厂，系统提供一个与产品等级结构对应的工厂等级结构。
  */
 
-// 示例
+// 结构示例
 // 抽象产品
 abstract class Product {
   public abstract sameMethod(): void;
